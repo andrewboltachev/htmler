@@ -1,4 +1,4 @@
-from file0002 import tag, render_attributes
+from htmler import tag, render_attributes
 
 def test_renders_basic_tags():
     assert tag('div') == '<div></div>'
