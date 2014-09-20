@@ -1,4 +1,4 @@
-EMPTY_TAGS = 'br img'
+EMPTY_TAGS = 'br img meta link'
 EMPTY_TAGS = EMPTY_TAGS.split(' ')
 
 
@@ -20,4 +20,4 @@ def tag(name, *children, **attributes):
 
     contents = ''.join(children)
 
-    return start_tag + contents + end_tag
+    return start_tag + contents + end_tag + '\n'
