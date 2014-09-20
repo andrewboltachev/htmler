@@ -14,3 +14,13 @@ def test_attributes_rendering_basic():
 
 def test_renders_attributes():
     assert tag('div', href='myid') == '<div href="myid"></div>'
+
+
+def test_renders_contents():
+    assert tag('div', tag('br'), tag('div', tag('img'))) == '<div><br><div><img></div></div>'
+
+def test_handles_attributes_underlines():
+    assert render_attributes(id_='myid') == 'id="myid"'
+
+def test_handles_attributes_underlines_2():
+    assert render_attributes(http_equiv='myid') == 'http-equiv="myid"'
