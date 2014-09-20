@@ -1,4 +1,4 @@
-from htmler.fun import html, head, meta, title, link, body, h1, script
+from htmler.fun import html, head, meta, title, link, body, script, div
 
 
 def bootstrap3(*contents):
@@ -17,5 +17,5 @@ def bootstrap3(*contents):
     )
 
 
-if __name__ == '__main__':
-    print(bootstrap3(h1('Hello, world!')))
+def container(*a, **kw):
+    return div(*a, class_='container', **kw)
