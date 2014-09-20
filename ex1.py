@@ -1,4 +1,4 @@
-from htmler import tag
+from htmler.fun import div, br, img
 
 if __name__ == '__main__':
-    print(tag('div'))
+    print(div(div(img()), br()))
