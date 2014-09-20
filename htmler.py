@@ -21,3 +21,19 @@ def tag(name, *children, **attributes):
     contents = ''.join(children)
 
     return start_tag + contents + end_tag
+
+
+import sys
+from types import ModuleType
+
+
+class module(ModuleType):
+    def __getattr__(self, name):
+        return lambda *a, **kw: tag(name, *a, **kw)
+
+
+# keep a reference to this module so that it's not garbage collected
+old_module = sys.modules['htmler']
+
+# setup the new module and patch it into the dict of loaded modules
+new_module = sys.modules['htmler'] = module('htmler')
