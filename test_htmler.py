@@ -25,5 +25,10 @@ def test_renders_contents():
 def test_handles_attributes_underlines():
     assert render_attributes(id_='myid') == 'id="myid"'
 
+
 def test_handles_attributes_underlines_2():
     assert render_attributes(http_equiv='myid') == 'http-equiv="myid"'
+
+
+def test_escapes_attributes_values():
+    assert render_attributes(http_equiv='\'\"&<>') == 'http-equiv="&apos;&quot;&amp;&lt;&gt;"'
