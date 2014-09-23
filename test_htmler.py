@@ -1,4 +1,7 @@
-from htmler.tags import tag, render_attributes
+from htmler.tags import tag as tag1, render_attributes
+
+def tag(*args, **kwargs):
+    return tag1(*args, **kwargs).replace('\n', '').strip(' ')
 
 def test_renders_basic_tags():
     assert tag('div') == '<div></div>'
