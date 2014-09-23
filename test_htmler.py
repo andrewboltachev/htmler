@@ -32,3 +32,7 @@ def test_handles_attributes_underlines_2():
 
 def test_escapes_attributes_values():
     assert render_attributes(http_equiv='\'\"&<>') == 'http-equiv="&apos;&quot;&amp;&lt;&gt;"'
+
+
+def test_escapes_attributes_values_edge_case1():
+    assert render_attributes(http_equiv='&amp;') == 'http-equiv="&amp;amp;"'
