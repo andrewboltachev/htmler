@@ -1,4 +1,4 @@
-from htmler.tags import tag, render_attributes, escape_child, SafeString
+from htmler.tags import tag, render_attributes, escape_child, SafeString, html_escape
 
 def test_renders_basic_tags():
     assert tag('div') == '<div></div>'
@@ -48,3 +48,6 @@ def test_escape_child_doesnt_escape_if_safestring():
 
 def test_safestring_convertes_to_string_transpatently():
     assert str(SafeString('<div>')) == '<div>'
+
+def test_html_escape_makes_anything_a_string():
+    assert html_escape({}) == '{}'

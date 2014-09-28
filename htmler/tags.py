@@ -12,6 +12,7 @@ ESCAPE_REPLACEMENTS = [
 
 
 def html_escape(s):
+    s = str(s)
     return reduce(lambda a, b: a.replace(b[0], b[1]), ESCAPE_REPLACEMENTS, s)
 
 def render_attributes(**attributes):
