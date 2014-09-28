@@ -6,10 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    try:
-        return bootstrap3(container(h1('Hello, world!')))
-    except:
-        import ipdb; ipdb.set_trace() # BREAKPOINT
+    return bootstrap3(container(h1('Hello, world!')))
 
 
 

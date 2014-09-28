@@ -1,7 +1,4 @@
-from htmler.tags import tag as tag1, render_attributes
-
-def tag(*args, **kwargs):
-    return tag1(*args, **kwargs).replace('\n', '').strip(' ')
+from htmler.tags import tag, render_attributes, escape_child, SafeString
 
 def test_renders_basic_tags():
     assert tag('div') == '<div></div>'
@@ -33,6 +30,21 @@ def test_handles_attributes_underlines_2():
 def test_escapes_attributes_values():
     assert render_attributes(http_equiv='\'\"&<>') == 'http-equiv="&apos;&quot;&amp;&lt;&gt;"'
 
-
 def test_escapes_attributes_values_edge_case1():
     assert render_attributes(http_equiv='&amp;') == 'http-equiv="&amp;amp;"'
+
+
+def test_escapes_strings_passed_to_tags():
+    assert tag('div', 'this must be escaped: "&<>\'"', tag('div', tag('br'))) == '<div>this must be escaped: &quot;&amp;&lt;&gt;&apos;&quot;<div><br></div></div>'
+
+
+def test_escape_child_escapes_if_not_safestring():
+    assert escape_child('<div>') == '&lt;div&gt;'
+
+
+def test_escape_child_doesnt_escape_if_safestring():
+    assert escape_child(SafeString('<div>')) == '<div>'
+
+
+def test_safestring_convertes_to_string_transpatently():
+    assert str(SafeString('<div>')) == '<div>'
