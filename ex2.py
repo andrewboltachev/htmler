@@ -1,4 +1,4 @@
-from bootstrap import bootstrap3, container
+from htmler.bootstrap import bootstrap3, container
 from htmler.fun import h1
 
 from flask import Flask
