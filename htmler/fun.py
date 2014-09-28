@@ -11,10 +11,8 @@ class module(ModuleType):
         result = list(new_module.__all__)
         result.extend((
             '__file__',
-            '__path__',
             '__doc__',
             '__all__',
-            '__version__'
         ))
         return result
 
@@ -25,10 +23,6 @@ old_module = sys.modules['htmler.fun']
 new_module = sys.modules['htmler.fun'] = module('htmler.fun')
 new_module.__dict__.update({
     '__file__':         __file__,
-    '__path__':         __path__,
     '__doc__':          __doc__,
-    '__version__':      __version__,
     '__all__':          tuple(),
 })
-
-
