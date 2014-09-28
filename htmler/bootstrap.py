@@ -17,5 +17,18 @@ def bootstrap3(*contents):
     )
 
 
+def _upd_class(kw, x):
+    if not 'class_' in kw:
+        kw['class_'] = x
+    else:
+        kw['class_'] += x
+
+
 def container(*a, **kw):
-    return div(*a, class_='container', **kw)
+    _upd_class(kw, 'container')
+    return div(*a, **kw)
+
+
+def row(*a, **kw):
+    _upd_class(kw, 'row')
+    return div(*a, class_='row', **kw)
