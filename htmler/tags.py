@@ -1,3 +1,15 @@
+try:
+    unicode
+except NameError:
+    unicode = str
+
+
+try:
+    reduce
+except NameError:
+    from functools import reduce as reduce
+
+
 EMPTY_TAGS = 'br img meta link'
 EMPTY_TAGS = EMPTY_TAGS.split(' ')
 
@@ -20,7 +32,7 @@ def render_attributes(**attributes):
         return reduce(lambda a, b: a.replace(b[0], b[1]), ESCAPE_REPLACEMENTS, v)
     def key(k):
         return k.rstrip('_').replace('_', '-')
-    return ' '.join(['{k}="{v}"'.format(k=key(k), v=val(v)) for k, v in attributes.iteritems()])
+    return ' '.join(['{k}="{v}"'.format(k=key(k), v=val(v)) for k, v in attributes.items()])
 
 
 class SafeString(unicode):
