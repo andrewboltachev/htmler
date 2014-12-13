@@ -15,3 +15,10 @@ Usage
 </div>
 </div>
 ```
+
+Installation
+============
+
+```
+pip install -e "git+https://github.com/andrewboltachev/htmler.git#egg=htmler"
+```
